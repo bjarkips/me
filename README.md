@@ -1,2 +1,2 @@
 # me
-A personal/portfolio for myself
+My personal/portfolio website
