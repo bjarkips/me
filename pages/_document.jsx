@@ -6,12 +6,17 @@ import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import theme from '../src/theme';
+import 'typeface-roboto';
 
 export default class MyDocument extends Document {
   render() {
     return (
       <html lang="en">
         <Head>
+          <link
+            rel="icon"
+            href="/favicon_16x16.png"
+          />
           <meta charSet="utf-8" />
           <meta
             name="viewport"
