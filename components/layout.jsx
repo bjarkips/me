@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import cloudinaryCore from 'cloudinary-core';
-import { Container, withStyles, Card } from '@material-ui/core';
+import {
+  Container,
+  withStyles,
+  Card,
+  Typography,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
 import Nav from './nav';
 import ButtonNext from './buttonNext';
-import { kebabToTitleCase } from '../src/utils';
-
-const cloudinary = new cloudinaryCore.Cloudinary({
-  cloud_name: 'dha1esy3y',
-  secure: true,
-});
+import { kebabToTitleCase, cloudinary } from '../src/utils';
 
 const backgroundURL = (
   width = undefined,
@@ -40,11 +39,11 @@ const MainCard = withStyles(
       },
       [theme.breakpoints.between('sm', 'lg')]: {
         width: 560,
-        padding: theme.spacing(10, 5),
+        padding: theme.spacing(8, 5),
       },
       [theme.breakpoints.up('lg')]: {
         width: 750,
-        padding: theme.spacing(10, 6),
+        padding: theme.spacing(5, 6),
       },
     },
   }),
@@ -76,16 +75,32 @@ const useStyles = makeStyles(
       alignItems: 'center',
       justifyContent: 'space-between',
     },
+    mainCard: {
+      '& h4': {
+        marginBottom: 24,
+        fontWeight: 'bold',
+      },
+      '& p': {
+        alignSelf: 'start',
+        '&:not(:last-child)': {
+          marginBottom: 24,
+        },
+      },
+    },
   }),
 );
 
 const Layout = ({ children, title, next }) => {
-  const { background, container } = useStyles();
+  const {
+    background,
+    container,
+    mainCard,
+  } = useStyles();
   return (
     <>
       <Head>
         <title>
-          {title}
+          {`${title} - Bjarki`}
         </title>
       </Head>
       <Nav />
@@ -95,7 +110,10 @@ const Layout = ({ children, title, next }) => {
           className={container}
         >
           <div className="flex flex-center full-height">
-            <MainCard className="flex flex-center flex-column">
+            <MainCard className={`${mainCard} flex flex-center flex-column`}>
+              <Typography variant="h4">
+                {title}
+              </Typography>
               {children}
             </MainCard>
           </div>
@@ -132,6 +150,11 @@ const Layout = ({ children, title, next }) => {
           .full-height {
             height: 100%;
           }
+
+          .bold {
+            font-weight: bold;
+          }
+
         `}
       </style>
     </>
