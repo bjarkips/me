@@ -31,6 +31,10 @@ const Implementation = () => {
           The general structure of this code draws from examples out of the Material UI documentation. At the time of writing, this library is well-maintained and up-to-date, With 52k GitHub stars and 750k weekly downloads from npm.
         </Typography>
         <Button
+          component="a"
+          href="https://github.com/bjarkips/me"
+          target="_blank"
+          rel="noopener noreferrer"
           className={button}
           variant="outlined"
           startIcon={<FontAwesomeIcon icon={faGithub} />}

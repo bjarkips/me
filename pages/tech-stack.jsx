@@ -20,12 +20,16 @@ const useStyles = makeStyles({
   list: {
     paddingTop: 24,
   },
+  bold: {
+    fontWeight: 'bold',
+  },
 });
 
 const TechStack = () => {
   const {
     logoContainer,
     list,
+    bold,
     ...classes
   } = useStyles();
 
@@ -57,7 +61,7 @@ const TechStack = () => {
     },
   ].map(
     ({ name, description, logo }) => (
-      <ListItem>
+      <ListItem key={name}>
         <ListItemIcon
           className={`flex flex-center ${logoContainer}`}
         >
@@ -71,7 +75,7 @@ const TechStack = () => {
           <Typography
             component="span"
             variant="body1"
-            className="bold"
+            className={bold}
           >
             {`${name}. `}
           </Typography>

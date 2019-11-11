@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Button } from '@material-ui/core';
+import { Typography, Button, useTheme, useMediaQuery } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -9,7 +9,13 @@ import Layout from '../components/layout';
 const useStyles = makeStyles(
   (theme) => ({
     button: {
-      margin: theme.spacing(2, 1.5),
+      minWidth: 100,
+      [theme.breakpoints.up('sm')]: {
+        margin: theme.spacing(2, 1.5),
+      },
+      [theme.breakpoints.down('sm')]: {
+        margin: theme.spacing(2, 1),
+      },
     },
     caption: {
       opacity: 0.6,
@@ -20,10 +26,12 @@ const useStyles = makeStyles(
 
 const ThankYou = () => {
   const { button, caption } = useStyles();
+  const theme = useTheme();
+  const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
   return (
     <div>
       <Layout
-        title="Thank You"
+        title={`Thank you${!isSmall ? ' for your time' : ''}`}
         next=""
       >
         <Typography
@@ -42,7 +50,7 @@ const ThankYou = () => {
             variant="outlined"
             startIcon={<FontAwesomeIcon icon={faLinkedin} />}
           >
-            View my Profile
+            { `${!isSmall ? 'View my ' : ''}Profile` }
           </Button>
           <Button
             component="a"
@@ -54,7 +62,7 @@ const ThankYou = () => {
             color="primary"
             startIcon={<FontAwesomeIcon icon={faExternalLinkAlt} />}
           >
-            View my CV
+            { `${!isSmall ? 'View my ' : ''}CV` }
           </Button>
         </div>
       </Layout>

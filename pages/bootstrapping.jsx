@@ -1,16 +1,9 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
-import { cloudinary } from '../src/utils';
+import { cloudinary, responsiveProps } from '../src/utils';
 import Layout from '../components/layout';
 
-const screenshotURL = cloudinary.url(
-  'github.png',
-  {
-    width: 650,
-    crop: 'fit',
-    fetch_format: 'auto',
-  },
-);
+const { srcset, sizes, src } = responsiveProps('github.png');
 
 const Bootstrapping = () => (
   <div>
@@ -22,7 +15,9 @@ const Bootstrapping = () => (
         After creating a git repository, I bootstrap the application using create-next-app. This sets up a proper directory structure and creates some basic utility scripts.
       </Typography>
       <img
-        src={screenshotURL}
+        srcSet={srcset}
+        sizes={sizes}
+        src={src}
         alt="Github screenshot"
       />
     </Layout>

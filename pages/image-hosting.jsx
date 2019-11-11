@@ -1,15 +1,21 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
-import { cloudinary } from '../src/utils';
+import { responsiveProps } from '../src/utils';
 import Layout from '../components/layout';
 
-const backgroundURL = cloudinary.url(
-  'background.png',
-  {
-    width: 400,
-    crop: 'fit',
-    fetch_format: 'auto',
-  },
+const { srcset, sizes, src } = responsiveProps(
+  'background.jpg',
+  [
+    {
+      breakpoint: 600,
+      width: 280,
+    },
+    {
+      breakpoint: 1280,
+      width: 400,
+    },
+    { width: 450 },
+  ],
 );
 
 const ImageHosting = () => (
@@ -28,7 +34,9 @@ const ImageHosting = () => (
         The background image I have chosen is by Leone Venter on Unsplash.
       </Typography>
       <img
-        src={backgroundURL}
+        srcSet={srcset}
+        sizes={sizes}
+        src={src}
         alt="Netlify deployments screenshot"
       />
     </Layout>

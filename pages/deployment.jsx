@@ -1,16 +1,9 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
-import { cloudinary } from '../src/utils';
+import { responsiveProps } from '../src/utils';
 import Layout from '../components/layout';
 
-const screenshotURL = cloudinary.url(
-  'deploy.png',
-  {
-    width: 650,
-    crop: 'fit',
-    fetch_format: 'auto',
-  },
-);
+const { srcset, sizes, src } = responsiveProps('deploy.png');
 
 const Deployment = () => (
   <div>
@@ -25,7 +18,9 @@ const Deployment = () => (
         I add the export script and push to master. This triggers a build on Netlify, which succeeds. The site is now live.
       </Typography>
       <img
-        src={screenshotURL}
+        srcSet={srcset}
+        sizes={sizes}
+        src={src}
         alt="Netlify deployments screenshot"
       />
     </Layout>

@@ -9,13 +9,16 @@ import { withStyles, makeStyles } from '@material-ui/styles';
 const WideFab = withStyles(
   (theme) => ({
     root: {
+      minHeight: 48,
       [theme.breakpoints.down('sm')]: {
         width: 240,
         marginBottom: theme.spacing(6),
+        marginTop: theme.spacing(3),
       },
       [theme.breakpoints.up('sm')]: {
         width: 280,
         marginBottom: 100,
+        marginTop: theme.spacing(3),
       },
     },
   }),
@@ -30,7 +33,10 @@ const useStyles = makeStyles({
 const ButtonNext = ({ title, href }) => {
   const { icon } = useStyles();
   return (
-    <Link href={href} passHref>
+    <Link
+      href={href}
+      passHref
+    >
       <WideFab
         component="a"
         variant="extended"

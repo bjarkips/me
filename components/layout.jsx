@@ -52,11 +52,14 @@ const MainCard = withStyles(
 const useStyles = makeStyles(
   (theme) => ({
     background: {
+      [theme.breakpoints.up('lg')]: {
+        height: '100%',
+      },
       paddingTop: 64,
-      height: '100%',
+      minHeight: '100%',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
-      backgroundAttachment: 'fixed',
+      backgroundAttachment: 'scroll',
       backgroundSize: 'cover',
       [theme.breakpoints.down('sm')]: {
         backgroundImage: backgroundURL(600, '9:16'),
@@ -69,6 +72,9 @@ const useStyles = makeStyles(
       },
     },
     container: {
+      [theme.breakpoints.down('lg')]: {
+        minHeight: 'calc(100vh - 64px)',
+      },
       height: '100%',
       display: 'flex',
       flexDirection: 'column',
@@ -76,14 +82,15 @@ const useStyles = makeStyles(
       justifyContent: 'space-between',
     },
     mainCard: {
+      marginTop: theme.spacing(3),
       '& h4': {
-        marginBottom: 24,
+        marginBottom: theme.spacing(3),
         fontWeight: 'bold',
       },
       '& p': {
         alignSelf: 'start',
         '&:not(:last-child)': {
-          marginBottom: 24,
+          marginBottom: theme.spacing(3),
         },
       },
     },
@@ -109,7 +116,7 @@ const Layout = ({ children, title, next }) => {
           maxWidth="xl"
           className={container}
         >
-          <div className="flex flex-center full-height">
+          <div className="flex flex-center flex-grow">
             <MainCard className={`${mainCard} flex flex-center flex-column`}>
               <Typography variant="h4">
                 {title}
@@ -147,14 +154,9 @@ const Layout = ({ children, title, next }) => {
             flex-direction: column;
           }
 
-          .full-height {
-            height: 100%;
+          .flex-grow {
+            flex-grow: 1;
           }
-
-          .bold {
-            font-weight: bold;
-          }
-
         `}
       </style>
     </>
