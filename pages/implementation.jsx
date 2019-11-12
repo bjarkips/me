@@ -8,7 +8,8 @@ import Layout from '../components/layout';
 const useStyles = makeStyles(
   (theme) => ({
     button: {
-      margin: theme.spacing(1.5, 0),
+      marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(1),
     },
   }),
 );
