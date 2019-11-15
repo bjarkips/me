@@ -83,7 +83,7 @@ const useStyles = makeStyles(
     },
     mainCard: {
       marginTop: theme.spacing(3),
-      '& h4': {
+      '& h1': {
         marginBottom: theme.spacing(3),
         fontWeight: 'bold',
       },
@@ -118,7 +118,10 @@ const Layout = ({ children, title, next }) => {
         >
           <div className="flex flex-center flex-grow">
             <MainCard className={`${mainCard} flex flex-center flex-column`}>
-              <Typography variant="h4">
+              <Typography
+                variant="h4"
+                component="h1"
+              >
                 {title}
               </Typography>
               {children}

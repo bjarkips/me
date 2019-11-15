@@ -12,7 +12,9 @@ const Deployment = () => (
       next="image-hosting"
     >
       <Typography variant="body1">
-        After bootstrapping, I log on to Netlify and set up continuous deployment, HTTPS, and a global CDN with a few clicks. Since I set the netlify build function to yarn build && yarn export, the first deployment fails as no export function has been defined.
+        After bootstrapping, I log on to Netlify and set up continuous deployment, HTTPS, and a global CDN with a few clicks. Since I set the Netlify build function to&nbsp;
+        <code>yarn build && yarn export</code>
+        , the first deployment fails as no export function has been defined.
       </Typography>
       <Typography variant="body1">
         I add the export script and push to master. This triggers a build on Netlify, which succeeds. The site is now live.
